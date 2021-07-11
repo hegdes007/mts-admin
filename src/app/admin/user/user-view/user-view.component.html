@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-between flex-wrap">
+  <h3 class=" text-decoration-underline m-1">List Of Users</h3>
+  <form class="form-inline col-5 m-1">
+    <div class="form-group">
+      <div class="col-12">
+        <input
+          type="text"
+          name="searchText"
+          class="novalidate form-control mr-sm-2"
+          [(ngModel)]="searchText"
+          (keyup)="filterUsers()"
+          placeholder="Search Users"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="table-responsive m-3">
+    <table class="table table-hover table-success table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">Email</th>
+            <th scope="col" class="text-center">Address</th>
+            <th scope="col" class="text-center">Phone</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let c of customers">
+          <tr>
+            <td>{{ c.customerName }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.address }}</td>
+            <td>{{ c.mobileNumber }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<h4 class="text-center" *ngIf="customers.length === 0">No Users Found!</h4>
